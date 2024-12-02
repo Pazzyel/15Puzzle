@@ -1,31 +1,25 @@
-#pragma once
-#include "Tile.h"
-#include <iostream>
-#include <iomanip>
+#ifndef _TILE_H_
+#define _TILE_H_
 
-//Æå×Ó
+#include <iostream>
+//Tile
 class Tile {
 public:
-	Tile() = default;
-	explicit Tile(int num)
-		: m_num{ num } {
-	}
+	Tile();
+	explicit Tile(int num);
 
-	friend std::ostream& operator<<(std::ostream& out, const Tile& tile) {
-		if (tile.m_num)
-			out << std::setw(3) << tile.m_num << ' ';
-		else
-			out << "    ";
-		return out;
-	}
+	friend std::ostream& operator<<(std::ostream& out, const Tile& tile);
 
-	constexpr bool isEmpty() const {
+	constexpr bool isEmpty() const {//constexpr function only can be define in header, because the compiler must know it's composition
 		return !m_num;
 	}
 
 	constexpr int getNum() const {
 		return m_num;
 	}
+
 private:
-	int m_num{ 0 };//0ÔòÎª¿Õ
-};
+	int m_num{ 0 };//0 represents null
+}; 
+
+#endif // !_TILE_H_
